@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton addNoteBtn;
     RecyclerView recyclerView;
     ImageButton menuBtn;
-    NoteAdapter noteAdapter;
+    //NoteAdapter noteAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         menuBtn = findViewById(R.id.menu_btn);
 
         // Add note button listener
-        addNoteBtn.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, NoteDetailsActivity.class));
-        });
+//        addNoteBtn.setOnClickListener(v -> {
+//        //    startActivity(new Intent(MainActivity.this, NoteDetailsActivity.class));
+//        });
 
         // Menu button listener
         menuBtn.setOnClickListener(v -> showMenu());
@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
                         .build();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        noteAdapter = new NoteAdapter(options, this);
-        recyclerView.setAdapter(noteAdapter);
+        //noteAdapter = new NoteAdapter(options, this);
+        //recyclerView.setAdapter(noteAdapter);
     }
 }
 

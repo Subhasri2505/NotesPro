@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(this,"Login Success",Toast.LENGTH_SHORT).show();
                             // 🔁 Navigate to MainActivity
-                            Intent intent = new Intent(LoginActivity.this, AddNotesActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, NotesDetailsActivity.class);
                             startActivity(intent);
                             finish(); // Prevent user from going back to login screen
                         } else {

@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
 
         // Delay and navigate to LoginActivity
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+            Intent intent = new Intent(SplashActivity.this,NotesDetailsActivity.class);
             startActivity(intent);
             finish(); // close SplashActivity so user can't go back to it
         }, SPLASH_DELAY);
