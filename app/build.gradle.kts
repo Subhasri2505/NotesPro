@@ -39,7 +39,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.auth)
-    implementation ("com.google.firebase:firebase-firestore:24.7.0")
+    implementation ("com.google.firebase:firebase-firestore:25.1.4")
     implementation ("com.google.firebase:firebase-auth:22.3.0")
     implementation ("com.google.android.material:material:1.11.0")
     implementation ("androidx.recyclerview:recyclerview:1.3.2")

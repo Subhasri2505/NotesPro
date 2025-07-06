@@ -13,9 +13,23 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".NoteDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddNotesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NoteDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddNotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".TestActivity"
             android:exported="false" />
-        <!-- SplashActivity (Launcher) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" /> <!-- SplashActivity (Launcher) -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -33,9 +47,6 @@
             android:exported="false" />
         <activity
             android:name=".CreateAccountActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
     </application>
 

@@ -2,28 +2,18 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText emailEditText, passwordEditText;
-    Button loginBtn;
-    ProgressBar progressBar;
-    TextView createAccountBtnTextView;
-
+    Button loginButton;
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -33,66 +23,31 @@ public class LoginActivity extends AppCompatActivity {
 
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
-        loginBtn = findViewById(R.id.login_btn);
-        progressBar = findViewById(R.id.progress_bar);
-        createAccountBtnTextView = findViewById(R.id.create_account_text_view_btn);
+        loginButton = findViewById(R.id.login_btn);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        loginBtn.setOnClickListener(v -> loginUser());
-        createAccountBtnTextView.setOnClickListener(v ->
-                startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class)));
-    }
+        loginButton.setOnClickListener(v -> {
+            String email = emailEditText.getText().toString().trim();
+            String password = passwordEditText.getText().toString().trim();
 
-    void loginUser() {
-        String email = emailEditText.getText().toString().trim();
-        String password = passwordEditText.getText().toString().trim();
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Email and password required", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-        if (!validateData(email, password)) return;
-
-        loginAccountInFirebase(email, password);
-    }
-
-    void loginAccountInFirebase(String email, String password) {
-        changeInProgress(true);
-
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
-                    changeInProgress(false);
-                    if (task.isSuccessful()) {
-                        if (firebaseAuth.getCurrentUser() != null && firebaseAuth.getCurrentUser().isEmailVerified()) {
-                            Utility.showToast(LoginActivity.this, "Login successful");
-                            Intent intent = new Intent(LoginActivity.this,TestActivity.class);
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(this,"Login Success",Toast.LENGTH_SHORT).show();
+                            // 🔁 Navigate to MainActivity
+                            Intent intent = new Intent(LoginActivity.this, AddNotesActivity.class);
                             startActivity(intent);
+                            finish(); // Prevent user from going back to login screen
                         } else {
-                            Utility.showToast(LoginActivity.this, "Email not verified. Please check your inbox.");
+                            Toast.makeText(this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Utility.showToast(LoginActivity.this, "Login failed: " +
-                                task.getException().getLocalizedMessage());
-                    }
-                });
-    }
-
-    void changeInProgress(boolean inProgress) {
-        if (inProgress) {
-            progressBar.setVisibility(View.VISIBLE);
-            loginBtn.setVisibility(View.GONE);
-        } else {
-            progressBar.setVisibility(View.GONE);
-            loginBtn.setVisibility(View.VISIBLE);
-        }
-    }
-
-    boolean validateData(String email, String password) {
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailEditText.setError("Invalid email address");
-            return false;
-        }
-        if (password.length() < 6) {
-            passwordEditText.setError("Password must be at least 6 characters");
-            return false;
-        }
-        return true;
+                    });
+        });
     }
 }

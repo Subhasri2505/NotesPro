@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.appwidget.AppWidgetHost;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -40,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Menu button listener
         menuBtn.setOnClickListener(v -> showMenu());
-
         // Set up Firestore Recycler
         setupRecyclerView();
     }
@@ -77,22 +77,24 @@ public class MainActivity extends AppCompatActivity {
         noteAdapter = new NoteAdapter(options, this);
         recyclerView.setAdapter(noteAdapter);
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        noteAdapter.startListening();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        noteAdapter.stopListening();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        noteAdapter.notifyDataSetChanged();
-    }
 }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        noteAdapter.startListening();
+//    }
+
+//    @Override
+//     protected void onStop() {
+//         super.onStop();
+//         noteAdapter.stopListening();
+// }
+//}
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        noteAdapter.notifyDataSetChanged();
+//    }
+//}
