@@ -15,8 +15,8 @@ public class NotesDetailsActivity extends AppCompatActivity {
         addBtn=findViewById(R.id.saveNotesButton);
         viewAllNotes=findViewById(R.id.notesDetails);
         addBtn.setOnClickListener(v -> {
-            //  Intent intent=new Intent(AddNotesActivity.this,NoteDetailActivity.class);
-            //startActivity(intent);
+             Intent intent=new Intent(NotesDetailsActivity.this,PersistNotesDetailsActivity.class);
+            startActivity(intent);
         });
         viewAllNotes.setOnClickListener(v -> {
             Intent intent=new Intent(NotesDetailsActivity.this,ViewAllNotesDetailsActivity.class);
