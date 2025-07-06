@@ -5,6 +5,10 @@ public class NoteDetails {
     private String author;
     private String description;
 
+    public NoteDetails() {
+
+    }
+
     public NoteDetails(String title, String author, String description) {
         this.title = title;
         this.author = author;
