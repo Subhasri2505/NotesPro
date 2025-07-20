@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 public class NoteDetails {
-    private String title;
+    private String tittle;
     private String author;
     private String description;
 
@@ -9,18 +9,18 @@ public class NoteDetails {
 
     }
 
-    public NoteDetails(String title, String author, String description) {
-        this.title = title;
+    public NoteDetails(String tittle, String author, String description) {
+        this.tittle = tittle;
         this.author = author;
         this.description = description;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTittle() {
+        return tittle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTittle(String tittle) {
+        this.tittle = tittle;
     }
 
     public String getAuthor() {

@@ -27,7 +27,7 @@ public class NotesDetailsAdapter extends RecyclerView.Adapter<NotesDetailsAdapte
     @Override
     public void onBindViewHolder(@NonNull NotesDetailsViewHolder holder, int position) {
         NoteDetails noteDetails = listOfNoteDetails.get(position);
-        holder.title.setText("Title: " + noteDetails.getTitle());
+        holder.tittle.setText("Tittle: " + noteDetails.getTittle());
         holder.author.setText("Author: " + noteDetails.getAuthor());
         holder.description.setText("Description: " + noteDetails.getDescription());
 
@@ -39,11 +39,11 @@ public class NotesDetailsAdapter extends RecyclerView.Adapter<NotesDetailsAdapte
     }
 
     public static class NotesDetailsViewHolder extends RecyclerView.ViewHolder {
-        TextView title, author, description;
+        TextView tittle, author, description;
 
         public NotesDetailsViewHolder(View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.textTitle);
+            tittle = itemView.findViewById(R.id.textTitle);
             author = itemView.findViewById(R.id.textAuthor);
             description = itemView.findViewById(R.id.textDescription);
         }

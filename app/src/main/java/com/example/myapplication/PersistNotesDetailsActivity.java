@@ -41,7 +41,7 @@ public class PersistNotesDetailsActivity extends AppCompatActivity {
             n.put("author",author);
             n.put("description",description);
             db.collection("note")
-                    .add("n")
+                    .add(n)
                     .addOnSuccessListener(documentReference -> {
                         Toast.makeText(this,"Added",Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(PersistNotesDetailsActivity.this,NotesDetailsActivity.class);
